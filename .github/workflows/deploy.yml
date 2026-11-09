@@ -3,7 +3,7 @@ name: Heartbeat Healthcheck & Deploy
 on:
   schedule:
     # Run on the 19th of each month at 04:00 UTC (48h after the 17th cron run)
-    - cron: '0 4 19 * *'
+    - cron: '19 4 19 * *'
   workflow_dispatch:
   push:
     branches:
@@ -47,8 +47,8 @@ jobs:
       - name: Commit Updated Data Snapshot (if changed on cron/manual)
         if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "actions-user"
+          git config user.email "actions-user@users.noreply.github.com"
           git add src/data/heartbeatSnapshot.json public/data/healthcheck.json public/openapi.json
           if ! git diff --cached --quiet; then
             git commit -m "chore(data): update monthly 17th cron healthcheck snapshot [skip ci]"
