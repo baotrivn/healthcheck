@@ -4,7 +4,7 @@ import packageInfo from '../../package.json';
 export const APP_VERSION: string = 
   typeof __APP_VERSION__ !== 'undefined' && __APP_VERSION__
     ? __APP_VERSION__
-    : (packageInfo.version || '0.1.0');
+    : packageInfo.version;
 
 export const APP_NAME: string = packageInfo.name || 'healthcheck';
 export const APP_DESCRIPTION: string = packageInfo.description || 'Healthcheck observatory';

@@ -1,6 +1,6 @@
 # Healthcheck Observatory 🩺
 
-[![Version](https://img.shields.io/badge/version-0.1.0-emerald.svg)](package.json)
+[![Version](https://img.shields.io/badge/version-0.1.1-emerald.svg)](package.json)
 [![OpenAPI 3.1](https://img.shields.io/badge/OpenAPI-3.1.0-teal.svg)](public/openapi.json)
 [![Schedule](https://img.shields.io/badge/Schedule-19th%20Monthly%20%2804%3A00%20UTC%29-indigo.svg)](.github/workflows/deploy.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -43,7 +43,7 @@ This observatory also publishes its own OpenAPI 3.1 specification at [`public/op
 
 ## ✨ Features
 
-- **Dynamic Project Versioning**: Project version `0.1.0` is retrieved dynamically from `package.json` (via Vite build definitions and imports) without hardcoding.
+- **Dynamic Project Versioning**: Project version `0.1.1` is retrieved dynamically from `package.json` (via Vite build definitions and imports) without hardcoding.
 - **Light & Dark Mode**: Persistent theme switcher with system preference detection and smooth transitions.
 - **Side-by-Side Comparison**: Live status, latest 17th cron execution, and queue jitter comparison across heartbeat targets.
 - **Monthly 17th Timeline**: Visual latency timeline and sortable tabular log of monthly runs (Jan 17th – Oct 17th).

@@ -1,9 +1,12 @@
-import { writeFileSync, mkdirSync } from 'node:fs';
+import { writeFileSync, mkdirSync, readFileSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+
+const pkg = JSON.parse(readFileSync(resolve(__dirname, '..', 'package.json'), 'utf-8'));
+const APP_VERSION = pkg.version || '0.1.1';
 
 const TARGET_REPOSITORIES = [
   {
@@ -31,7 +34,7 @@ async function fetchJson(url, retries = 3, timeout = 10000) {
         signal: controller.signal,
         headers: {
           'Accept': 'application/json',
-          'User-Agent': 'Healthcheck-Observatory/0.1.0 (+https://github.com/baotrivn/healthcheck)',
+          'User-Agent': `Healthcheck-Observatory/${APP_VERSION} (+https://github.com/baotrivn/healthcheck)`,
         },
       });
       clearTimeout(timer);
@@ -173,7 +176,7 @@ async function main() {
     : 0;
 
   const payload = {
-    version: '0.1.0',
+    version: APP_VERSION,
     generatedAt: timestamp,
     checkSchedule: {
       cron: '0 4 19 * *',
@@ -212,7 +215,7 @@ async function main() {
     openapi: '3.1.0',
     info: {
       title: 'Heartbeat Healthcheck Observatory API',
-      version: '0.1.0',
+      version: APP_VERSION,
       description: 'Automated healthcheck observatory monitoring monthly 17th cron execution across heartbeat repositories. Automatically runs on the 19th of each month to account for runner delays.',
       contact: {
         name: 'baotrivn',

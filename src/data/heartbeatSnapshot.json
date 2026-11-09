@@ -1,6 +1,6 @@
 {
-  "version": "0.1.0",
-  "generatedAt": "2026-11-09T10:29:17.562Z",
+  "version": "0.1.1",
+  "generatedAt": "2026-11-09T11:42:28.729Z",
   "checkSchedule": {
     "cron": "0 4 19 * *",
     "description": "Every month on the 19th at 04:00 UTC (48h buffer after the 17th cron)",
@@ -24,7 +24,7 @@
       "repoUrl": "https://github.com/flynn0/heartbeat",
       "description": "Primary GitHub Actions Cron Jitter & Delay Observatory",
       "status": "online",
-      "checkedAt": "2026-11-09T10:29:17.754Z",
+      "checkedAt": "2026-11-09T11:42:32.499Z",
       "openApi": {
         "url": "https://flynn0.github.io/heartbeat/openapi.json",
         "isValid": true,
@@ -440,7 +440,7 @@
       "repoUrl": "https://github.com/baotrivn/heartbeat",
       "description": "Mirror GitHub Actions Cron Jitter & Delay Observatory",
       "status": "online",
-      "checkedAt": "2026-11-09T10:29:17.904Z",
+      "checkedAt": "2026-11-09T11:42:32.976Z",
       "openApi": {
         "url": "https://baotrivn.github.io/heartbeat/openapi.json",
         "isValid": true,
