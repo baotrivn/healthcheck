@@ -1,0 +1,49 @@
+{
+  "name": "healthcheck",
+  "version": "0.1.0",
+  "description": "Healthcheck observatory monitoring monthly 17th cron execution across heartbeat repositories via OpenAPI 3.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "fetch-data": "node scripts/fetch-heartbeats.mjs",
+    "build": "node scripts/fetch-heartbeats.mjs && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/baotrivn/healthcheck.git"
+  },
+  "keywords": [
+    "heartbeat",
+    "healthcheck",
+    "cron",
+    "github-actions",
+    "jitter",
+    "latency",
+    "observatory",
+    "openapi"
+  ],
+  "author": "baotrivn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/baotrivn/healthcheck/issues"
+  },
+  "homepage": "https://baotrivn.github.io/healthcheck/",
+  "dependencies": {
+    "lucide-react": "^1.70.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.3.0",
+    "autoprefixer": "^10.6.2",
+    "postcss": "^8.5.32",
+    "tailwindcss": "^3.4.19",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.6"
+  }
+}

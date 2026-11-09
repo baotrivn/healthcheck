@@ -1,0 +1,853 @@
+{
+  "version": "0.1.0",
+  "generatedAt": "2026-11-09T10:29:17.562Z",
+  "checkSchedule": {
+    "cron": "0 4 19 * *",
+    "description": "Every month on the 19th at 04:00 UTC (48h buffer after the 17th cron)",
+    "reason": "GitHub Actions cron jobs scheduled on the 17th can experience delays; running healthcheck on the 19th ensures complete execution data capture."
+  },
+  "monitoredSchedule": {
+    "cron": "14 3 17 * *",
+    "description": "Target heartbeat repositories scheduled on the 17th of each month at 03:14 UTC"
+  },
+  "summary": {
+    "totalMonitored": 2,
+    "onlineCount": 2,
+    "openApiCompliantCount": 2,
+    "averageDelaySecondsAcrossAll": 201067
+  },
+  "repositories": [
+    {
+      "id": "flynn0",
+      "name": "flynn0 / heartbeat",
+      "baseUrl": "https://flynn0.github.io/heartbeat",
+      "repoUrl": "https://github.com/flynn0/heartbeat",
+      "description": "Primary GitHub Actions Cron Jitter & Delay Observatory",
+      "status": "online",
+      "checkedAt": "2026-11-09T10:29:17.754Z",
+      "openApi": {
+        "url": "https://flynn0.github.io/heartbeat/openapi.json",
+        "isValid": true,
+        "specVersion": "3.1.0",
+        "title": "Heartbeat Delay & Execution API",
+        "description": "Machine-readable REST API for Heartbeat — GitHub Actions Cron Jitter & Runner Delay Observatory. Provides endpoints to retrieve the latest cron schedule delay, latest manual trigger and delay, and complete execution history with latency measurements.",
+        "endpoints": [
+          "/api/latest-delay.json",
+          "/api/latest-manual.json",
+          "/api/history.json",
+          "/api/summary.json"
+        ],
+        "paths": {
+          "/api/latest-delay.json": {
+            "get": {
+              "summary": "Retrieve latest cron schedule delay time",
+              "description": "Returns the most recent monthly cron execution (scheduled for the 17th of the month at 03:14:00 UTC) with its calculated runner queue delay time and execution metadata.",
+              "operationId": "getLatestCronDelay",
+              "responses": {
+                "200": {
+                  "description": "Latest cron execution measurement",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/CronExecution"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "/api/latest-manual.json": {
+            "get": {
+              "summary": "Retrieve latest manual trigger and delay time",
+              "description": "Returns the most recent manual workflow dispatch run, including dispatch time, actual execution time, queue delay time, and dispatch note.",
+              "operationId": "getLatestManualTrigger",
+              "responses": {
+                "200": {
+                  "description": "Latest manual trigger measurement",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/ManualExecution"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "/api/history.json": {
+            "get": {
+              "summary": "Retrieve complete execution history and measurements",
+              "description": "Returns all historical cron jitter measurements and manual trigger dispatches, along with aggregate statistics (mean delay, min/max variance, total run counts).",
+              "operationId": "getExecutionHistory",
+              "responses": {
+                "200": {
+                  "description": "Complete execution history and measurements",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/HistoryResponse"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "/api/summary.json": {
+            "get": {
+              "summary": "Retrieve status summary and metrics overview",
+              "description": "Returns a consolidated summary object combining the latest cron delay, the latest manual trigger, queue health status, and next scheduled run timestamp.",
+              "operationId": "getStatusSummary",
+              "responses": {
+                "200": {
+                  "description": "Status summary overview",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/SummaryResponse"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "schedule": {
+        "cron": "14 3 17 * *",
+        "description": "Every month on the 17th at 03:14:00 UTC"
+      },
+      "latest17thRun": {
+        "id": "cron-2026-10-17",
+        "type": "cron",
+        "runId": "local-1794212238466",
+        "runNumber": 1,
+        "scheduledTime": "2026-10-17T03:14:00.000Z",
+        "actualTime": "2026-11-09T08:17:18.466Z",
+        "delayMs": 2005398466,
+        "delaySeconds": 2005398,
+        "delayFormatted": "+557h 3m 18s",
+        "actor": "system",
+        "commitSha": "local-dev",
+        "status": "success",
+        "dayOfMonth": 17,
+        "is17th": true,
+        "delayCategory": "severe",
+        "scheduledDateUtc": "2026-10-17T03:14:00.000Z",
+        "actualDateUtc": "2026-11-09T08:17:18.466Z"
+      },
+      "latestManualTrigger": {
+        "id": "manual-1794219021047",
+        "type": "manual",
+        "runId": "42598883537",
+        "runNumber": 4,
+        "dispatchTime": "2026-11-09T10:10:16.844Z",
+        "actualTime": "2026-11-09T10:10:21.044Z",
+        "delayMs": 4200,
+        "delaySeconds": 4,
+        "delayFormatted": "+4s",
+        "actor": "flynn0",
+        "commitSha": "6ca50ff3cbaad3b79d766cb056ce384387b58ee8",
+        "note": "Manual health check",
+        "status": "success"
+      },
+      "statistics": {
+        "totalRuns": 15,
+        "cronRuns": 10,
+        "manualRuns": 5,
+        "latestCronDelaySeconds": 2005398,
+        "averageCronDelaySeconds": 201067,
+        "minCronDelaySeconds": 214,
+        "maxCronDelaySeconds": 2005398
+      },
+      "cronExecutions": [
+        {
+          "id": "cron-2026-01-17",
+          "type": "cron",
+          "runId": "13000101",
+          "runNumber": 1,
+          "scheduledTime": "2026-01-17T03:14:00.000Z",
+          "actualTime": "2026-01-17T03:22:45.000Z",
+          "delayMs": 525000,
+          "delaySeconds": 525,
+          "delayFormatted": "+8m 45s",
+          "actor": "github-actions[bot]",
+          "commitSha": "776c324",
+          "status": "success",
+          "dayOfMonth": 17,
+          "is17th": true,
+          "delayCategory": "minimal",
+          "scheduledDateUtc": "2026-01-17T03:14:00.000Z",
+          "actualDateUtc": "2026-01-17T03:22:45.000Z"
+        },
+        {
+          "id": "cron-2026-02-17",
+          "type": "cron",
+          "runId": "13000102",
+          "runNumber": 2,
+          "scheduledTime": "2026-02-17T03:14:00.000Z",
+          "actualTime": "2026-02-17T03:19:12.000Z",
+          "delayMs": 312000,
+          "delaySeconds": 312,
+          "delayFormatted": "+5m 12s",
+          "actor": "github-actions[bot]",
+          "commitSha": "776c324",
+          "status": "success",
+          "dayOfMonth": 17,
+          "is17th": true,
+          "delayCategory": "minimal",
+          "scheduledDateUtc": "2026-02-17T03:14:00.000Z",
+          "actualDateUtc": "2026-02-17T03:19:12.000Z"
+        },
+        {
+          "id": "cron-2026-03-17",
+          "type": "cron",
+          "runId": "13000103",
+          "runNumber": 3,
+          "scheduledTime": "2026-03-17T03:14:00.000Z",
+          "actualTime": "2026-03-17T03:29:50.000Z",
+          "delayMs": 950000,
+          "delaySeconds": 950,
+          "delayFormatted": "+15m 50s",
+          "actor": "github-actions[bot]",
+          "commitSha": "776c324",
+          "status": "success",
+          "dayOfMonth": 17,
+          "is17th": true,
+          "delayCategory": "moderate",
+          "scheduledDateUtc": "2026-03-17T03:14:00.000Z",
+          "actualDateUtc": "2026-03-17T03:29:50.000Z"
+        },
+        {
+          "id": "cron-2026-04-17",
+          "type": "cron",
+          "runId": "13000104",
+          "runNumber": 4,
+          "scheduledTime": "2026-04-17T03:14:00.000Z",
+          "actualTime": "2026-04-17T03:21:03.000Z",
+          "delayMs": 423000,
+          "delaySeconds": 423,
+          "delayFormatted": "+7m 3s",
+          "actor": "github-actions[bot]",
+          "commitSha": "776c324",
+          "status": "success",
+          "dayOfMonth": 17,
+          "is17th": true,
+          "delayCategory": "minimal",
+          "scheduledDateUtc": "2026-04-17T03:14:00.000Z",
+          "actualDateUtc": "2026-04-17T03:21:03.000Z"
+        },
+        {
+          "id": "cron-2026-05-17",
+          "type": "cron",
+          "runId": "13000105",
+          "runNumber": 5,
+          "scheduledTime": "2026-05-17T03:14:00.000Z",
+          "actualTime": "2026-05-17T03:17:34.000Z",
+          "delayMs": 214000,
+          "delaySeconds": 214,
+          "delayFormatted": "+3m 34s",
+          "actor": "github-actions[bot]",
+          "commitSha": "776c324",
+          "status": "success",
+          "dayOfMonth": 17,
+          "is17th": true,
+          "delayCategory": "minimal",
+          "scheduledDateUtc": "2026-05-17T03:14:00.000Z",
+          "actualDateUtc": "2026-05-17T03:17:34.000Z"
+        },
+        {
+          "id": "cron-2026-06-17",
+          "type": "cron",
+          "runId": "13000106",
+          "runNumber": 6,
+          "scheduledTime": "2026-06-17T03:14:00.000Z",
+          "actualTime": "2026-06-17T03:32:18.000Z",
+          "delayMs": 1098000,
+          "delaySeconds": 1098,
+          "delayFormatted": "+18m 18s",
+          "actor": "github-actions[bot]",
+          "commitSha": "776c324",
+          "status": "success",
+          "dayOfMonth": 17,
+          "is17th": true,
+          "delayCategory": "moderate",
+          "scheduledDateUtc": "2026-06-17T03:14:00.000Z",
+          "actualDateUtc": "2026-06-17T03:32:18.000Z"
+        },
+        {
+          "id": "cron-2026-07-17",
+          "type": "cron",
+          "runId": "13000107",
+          "runNumber": 7,
+          "scheduledTime": "2026-07-17T03:14:00.000Z",
+          "actualTime": "2026-07-17T03:25:40.000Z",
+          "delayMs": 700000,
+          "delaySeconds": 700,
+          "delayFormatted": "+11m 40s",
+          "actor": "github-actions[bot]",
+          "commitSha": "776c324",
+          "status": "success",
+          "dayOfMonth": 17,
+          "is17th": true,
+          "delayCategory": "moderate",
+          "scheduledDateUtc": "2026-07-17T03:14:00.000Z",
+          "actualDateUtc": "2026-07-17T03:25:40.000Z"
+        },
+        {
+          "id": "cron-2026-08-17",
+          "type": "cron",
+          "runId": "13000108",
+          "runNumber": 8,
+          "scheduledTime": "2026-08-17T03:14:00.000Z",
+          "actualTime": "2026-08-17T03:18:22.000Z",
+          "delayMs": 262000,
+          "delaySeconds": 262,
+          "delayFormatted": "+4m 22s",
+          "actor": "github-actions[bot]",
+          "commitSha": "776c324",
+          "status": "success",
+          "dayOfMonth": 17,
+          "is17th": true,
+          "delayCategory": "minimal",
+          "scheduledDateUtc": "2026-08-17T03:14:00.000Z",
+          "actualDateUtc": "2026-08-17T03:18:22.000Z"
+        },
+        {
+          "id": "cron-2026-09-17",
+          "type": "cron",
+          "runId": "13000109",
+          "runNumber": 9,
+          "scheduledTime": "2026-09-17T03:14:00.000Z",
+          "actualTime": "2026-09-17T03:27:10.000Z",
+          "delayMs": 790000,
+          "delaySeconds": 790,
+          "delayFormatted": "+13m 10s",
+          "actor": "github-actions[bot]",
+          "commitSha": "776c324",
+          "status": "success",
+          "dayOfMonth": 17,
+          "is17th": true,
+          "delayCategory": "moderate",
+          "scheduledDateUtc": "2026-09-17T03:14:00.000Z",
+          "actualDateUtc": "2026-09-17T03:27:10.000Z"
+        },
+        {
+          "id": "cron-2026-10-17",
+          "type": "cron",
+          "runId": "local-1794212238466",
+          "runNumber": 1,
+          "scheduledTime": "2026-10-17T03:14:00.000Z",
+          "actualTime": "2026-11-09T08:17:18.466Z",
+          "delayMs": 2005398466,
+          "delaySeconds": 2005398,
+          "delayFormatted": "+557h 3m 18s",
+          "actor": "system",
+          "commitSha": "local-dev",
+          "status": "success",
+          "dayOfMonth": 17,
+          "is17th": true,
+          "delayCategory": "severe",
+          "scheduledDateUtc": "2026-10-17T03:14:00.000Z",
+          "actualDateUtc": "2026-11-09T08:17:18.466Z"
+        }
+      ],
+      "manualExecutions": [
+        {
+          "id": "manual-1794219021047",
+          "type": "manual",
+          "runId": "42598883537",
+          "runNumber": 4,
+          "dispatchTime": "2026-11-09T10:10:16.844Z",
+          "actualTime": "2026-11-09T10:10:21.044Z",
+          "delayMs": 4200,
+          "delaySeconds": 4,
+          "delayFormatted": "+4s",
+          "actor": "flynn0",
+          "commitSha": "6ca50ff3cbaad3b79d766cb056ce384387b58ee8",
+          "note": "Manual health check",
+          "status": "success"
+        },
+        {
+          "id": "manual-1794211587536",
+          "type": "manual",
+          "runId": "42583544719",
+          "runNumber": 1,
+          "dispatchTime": "2026-11-09T08:06:23.000Z",
+          "actualTime": "2026-11-09T08:06:27.534Z",
+          "delayMs": 4534,
+          "delaySeconds": 5,
+          "delayFormatted": "+5s",
+          "actor": "flynn0",
+          "commitSha": "381f67c451e743b2edb4725ef787c9ecb859a647",
+          "note": "Manual health check",
+          "status": "success"
+        },
+        {
+          "id": "manual-1794211269516",
+          "type": "manual",
+          "runId": "local-1794211269512",
+          "runNumber": 12,
+          "dispatchTime": "2026-11-09T08:01:05.000Z",
+          "actualTime": "2026-11-09T08:01:09.512Z",
+          "delayMs": 4512,
+          "delaySeconds": 5,
+          "delayFormatted": "+5s",
+          "actor": "flynn0",
+          "commitSha": "381f67c",
+          "note": "Release v0.1.0 initial verification",
+          "status": "success"
+        },
+        {
+          "id": "manual-1794210927444",
+          "type": "manual",
+          "runId": "local-1794210927440",
+          "runNumber": 11,
+          "dispatchTime": "2026-11-09T07:55:23.000Z",
+          "actualTime": "2026-11-09T07:55:27.439Z",
+          "delayMs": 4439,
+          "delaySeconds": 4,
+          "delayFormatted": "+4s",
+          "actor": "system",
+          "commitSha": "776c324",
+          "note": "Test setup verification",
+          "status": "success"
+        },
+        {
+          "id": "manual-1762674312000",
+          "type": "manual",
+          "runId": "14000001",
+          "runNumber": 10,
+          "dispatchTime": "2026-11-09T07:45:06.000Z",
+          "actualTime": "2026-11-09T07:45:12.000Z",
+          "delayMs": 6000,
+          "delaySeconds": 6,
+          "delayFormatted": "+6s",
+          "actor": "flynn0",
+          "commitSha": "776c324",
+          "note": "Initial deployment verification trigger",
+          "status": "success"
+        }
+      ]
+    },
+    {
+      "id": "baotrivn",
+      "name": "baotrivn / heartbeat",
+      "baseUrl": "https://baotrivn.github.io/heartbeat",
+      "repoUrl": "https://github.com/baotrivn/heartbeat",
+      "description": "Mirror GitHub Actions Cron Jitter & Delay Observatory",
+      "status": "online",
+      "checkedAt": "2026-11-09T10:29:17.904Z",
+      "openApi": {
+        "url": "https://baotrivn.github.io/heartbeat/openapi.json",
+        "isValid": true,
+        "specVersion": "3.1.0",
+        "title": "Heartbeat Delay & Execution API",
+        "description": "Machine-readable REST API for Heartbeat — GitHub Actions Cron Jitter & Runner Delay Observatory. Provides endpoints to retrieve the latest cron schedule delay, latest manual trigger and delay, and complete execution history with latency measurements.",
+        "endpoints": [
+          "/api/latest-delay.json",
+          "/api/latest-manual.json",
+          "/api/history.json",
+          "/api/summary.json"
+        ],
+        "paths": {
+          "/api/latest-delay.json": {
+            "get": {
+              "summary": "Retrieve latest cron schedule delay time",
+              "description": "Returns the most recent monthly cron execution (scheduled for the 17th of the month at 03:14:00 UTC) with its calculated runner queue delay time and execution metadata.",
+              "operationId": "getLatestCronDelay",
+              "responses": {
+                "200": {
+                  "description": "Latest cron execution measurement",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/CronExecution"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "/api/latest-manual.json": {
+            "get": {
+              "summary": "Retrieve latest manual trigger and delay time",
+              "description": "Returns the most recent manual workflow dispatch run, including dispatch time, actual execution time, queue delay time, and dispatch note.",
+              "operationId": "getLatestManualTrigger",
+              "responses": {
+                "200": {
+                  "description": "Latest manual trigger measurement",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/ManualExecution"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "/api/history.json": {
+            "get": {
+              "summary": "Retrieve complete execution history and measurements",
+              "description": "Returns all historical cron jitter measurements and manual trigger dispatches, along with aggregate statistics (mean delay, min/max variance, total run counts).",
+              "operationId": "getExecutionHistory",
+              "responses": {
+                "200": {
+                  "description": "Complete execution history and measurements",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/HistoryResponse"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "/api/summary.json": {
+            "get": {
+              "summary": "Retrieve status summary and metrics overview",
+              "description": "Returns a consolidated summary object combining the latest cron delay, the latest manual trigger, queue health status, and next scheduled run timestamp.",
+              "operationId": "getStatusSummary",
+              "responses": {
+                "200": {
+                  "description": "Status summary overview",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/SummaryResponse"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "schedule": {
+        "cron": "14 3 17 * *",
+        "description": "Every month on the 17th at 03:14:00 UTC"
+      },
+      "latest17thRun": {
+        "id": "cron-2026-10-17",
+        "type": "cron",
+        "runId": "local-1794212238466",
+        "runNumber": 1,
+        "scheduledTime": "2026-10-17T03:14:00.000Z",
+        "actualTime": "2026-11-09T08:17:18.466Z",
+        "delayMs": 2005398466,
+        "delaySeconds": 2005398,
+        "delayFormatted": "+557h 3m 18s",
+        "actor": "system",
+        "commitSha": "local-dev",
+        "status": "success",
+        "dayOfMonth": 17,
+        "is17th": true,
+        "delayCategory": "severe",
+        "scheduledDateUtc": "2026-10-17T03:14:00.000Z",
+        "actualDateUtc": "2026-11-09T08:17:18.466Z"
+      },
+      "latestManualTrigger": {
+        "id": "manual-1794214926286",
+        "type": "manual",
+        "runId": "42590246519",
+        "runNumber": 3,
+        "dispatchTime": "2026-11-09T09:02:02.084Z",
+        "actualTime": "2026-11-09T09:02:06.284Z",
+        "delayMs": 4200,
+        "delaySeconds": 4,
+        "delayFormatted": "+4s",
+        "actor": "baotrivn",
+        "commitSha": "8151b6cc52acb415884be39a965f51d9fd96ac6a",
+        "note": "Manual health check",
+        "status": "success"
+      },
+      "statistics": {
+        "totalRuns": 15,
+        "cronRuns": 10,
+        "manualRuns": 5,
+        "latestCronDelaySeconds": 2005398,
+        "averageCronDelaySeconds": 201067,
+        "minCronDelaySeconds": 214,
+        "maxCronDelaySeconds": 2005398
+      },
+      "cronExecutions": [
+        {
+          "id": "cron-2026-01-17",
+          "type": "cron",
+          "runId": "13000101",
+          "runNumber": 1,
+          "scheduledTime": "2026-01-17T03:14:00.000Z",
+          "actualTime": "2026-01-17T03:22:45.000Z",
+          "delayMs": 525000,
+          "delaySeconds": 525,
+          "delayFormatted": "+8m 45s",
+          "actor": "github-actions[bot]",
+          "commitSha": "776c324",
+          "status": "success",
+          "dayOfMonth": 17,
+          "is17th": true,
+          "delayCategory": "minimal",
+          "scheduledDateUtc": "2026-01-17T03:14:00.000Z",
+          "actualDateUtc": "2026-01-17T03:22:45.000Z"
+        },
+        {
+          "id": "cron-2026-02-17",
+          "type": "cron",
+          "runId": "13000102",
+          "runNumber": 2,
+          "scheduledTime": "2026-02-17T03:14:00.000Z",
+          "actualTime": "2026-02-17T03:19:12.000Z",
+          "delayMs": 312000,
+          "delaySeconds": 312,
+          "delayFormatted": "+5m 12s",
+          "actor": "github-actions[bot]",
+          "commitSha": "776c324",
+          "status": "success",
+          "dayOfMonth": 17,
+          "is17th": true,
+          "delayCategory": "minimal",
+          "scheduledDateUtc": "2026-02-17T03:14:00.000Z",
+          "actualDateUtc": "2026-02-17T03:19:12.000Z"
+        },
+        {
+          "id": "cron-2026-03-17",
+          "type": "cron",
+          "runId": "13000103",
+          "runNumber": 3,
+          "scheduledTime": "2026-03-17T03:14:00.000Z",
+          "actualTime": "2026-03-17T03:29:50.000Z",
+          "delayMs": 950000,
+          "delaySeconds": 950,
+          "delayFormatted": "+15m 50s",
+          "actor": "github-actions[bot]",
+          "commitSha": "776c324",
+          "status": "success",
+          "dayOfMonth": 17,
+          "is17th": true,
+          "delayCategory": "moderate",
+          "scheduledDateUtc": "2026-03-17T03:14:00.000Z",
+          "actualDateUtc": "2026-03-17T03:29:50.000Z"
+        },
+        {
+          "id": "cron-2026-04-17",
+          "type": "cron",
+          "runId": "13000104",
+          "runNumber": 4,
+          "scheduledTime": "2026-04-17T03:14:00.000Z",
+          "actualTime": "2026-04-17T03:21:03.000Z",
+          "delayMs": 423000,
+          "delaySeconds": 423,
+          "delayFormatted": "+7m 3s",
+          "actor": "github-actions[bot]",
+          "commitSha": "776c324",
+          "status": "success",
+          "dayOfMonth": 17,
+          "is17th": true,
+          "delayCategory": "minimal",
+          "scheduledDateUtc": "2026-04-17T03:14:00.000Z",
+          "actualDateUtc": "2026-04-17T03:21:03.000Z"
+        },
+        {
+          "id": "cron-2026-05-17",
+          "type": "cron",
+          "runId": "13000105",
+          "runNumber": 5,
+          "scheduledTime": "2026-05-17T03:14:00.000Z",
+          "actualTime": "2026-05-17T03:17:34.000Z",
+          "delayMs": 214000,
+          "delaySeconds": 214,
+          "delayFormatted": "+3m 34s",
+          "actor": "github-actions[bot]",
+          "commitSha": "776c324",
+          "status": "success",
+          "dayOfMonth": 17,
+          "is17th": true,
+          "delayCategory": "minimal",
+          "scheduledDateUtc": "2026-05-17T03:14:00.000Z",
+          "actualDateUtc": "2026-05-17T03:17:34.000Z"
+        },
+        {
+          "id": "cron-2026-06-17",
+          "type": "cron",
+          "runId": "13000106",
+          "runNumber": 6,
+          "scheduledTime": "2026-06-17T03:14:00.000Z",
+          "actualTime": "2026-06-17T03:32:18.000Z",
+          "delayMs": 1098000,
+          "delaySeconds": 1098,
+          "delayFormatted": "+18m 18s",
+          "actor": "github-actions[bot]",
+          "commitSha": "776c324",
+          "status": "success",
+          "dayOfMonth": 17,
+          "is17th": true,
+          "delayCategory": "moderate",
+          "scheduledDateUtc": "2026-06-17T03:14:00.000Z",
+          "actualDateUtc": "2026-06-17T03:32:18.000Z"
+        },
+        {
+          "id": "cron-2026-07-17",
+          "type": "cron",
+          "runId": "13000107",
+          "runNumber": 7,
+          "scheduledTime": "2026-07-17T03:14:00.000Z",
+          "actualTime": "2026-07-17T03:25:40.000Z",
+          "delayMs": 700000,
+          "delaySeconds": 700,
+          "delayFormatted": "+11m 40s",
+          "actor": "github-actions[bot]",
+          "commitSha": "776c324",
+          "status": "success",
+          "dayOfMonth": 17,
+          "is17th": true,
+          "delayCategory": "moderate",
+          "scheduledDateUtc": "2026-07-17T03:14:00.000Z",
+          "actualDateUtc": "2026-07-17T03:25:40.000Z"
+        },
+        {
+          "id": "cron-2026-08-17",
+          "type": "cron",
+          "runId": "13000108",
+          "runNumber": 8,
+          "scheduledTime": "2026-08-17T03:14:00.000Z",
+          "actualTime": "2026-08-17T03:18:22.000Z",
+          "delayMs": 262000,
+          "delaySeconds": 262,
+          "delayFormatted": "+4m 22s",
+          "actor": "github-actions[bot]",
+          "commitSha": "776c324",
+          "status": "success",
+          "dayOfMonth": 17,
+          "is17th": true,
+          "delayCategory": "minimal",
+          "scheduledDateUtc": "2026-08-17T03:14:00.000Z",
+          "actualDateUtc": "2026-08-17T03:18:22.000Z"
+        },
+        {
+          "id": "cron-2026-09-17",
+          "type": "cron",
+          "runId": "13000109",
+          "runNumber": 9,
+          "scheduledTime": "2026-09-17T03:14:00.000Z",
+          "actualTime": "2026-09-17T03:27:10.000Z",
+          "delayMs": 790000,
+          "delaySeconds": 790,
+          "delayFormatted": "+13m 10s",
+          "actor": "github-actions[bot]",
+          "commitSha": "776c324",
+          "status": "success",
+          "dayOfMonth": 17,
+          "is17th": true,
+          "delayCategory": "moderate",
+          "scheduledDateUtc": "2026-09-17T03:14:00.000Z",
+          "actualDateUtc": "2026-09-17T03:27:10.000Z"
+        },
+        {
+          "id": "cron-2026-10-17",
+          "type": "cron",
+          "runId": "local-1794212238466",
+          "runNumber": 1,
+          "scheduledTime": "2026-10-17T03:14:00.000Z",
+          "actualTime": "2026-11-09T08:17:18.466Z",
+          "delayMs": 2005398466,
+          "delaySeconds": 2005398,
+          "delayFormatted": "+557h 3m 18s",
+          "actor": "system",
+          "commitSha": "local-dev",
+          "status": "success",
+          "dayOfMonth": 17,
+          "is17th": true,
+          "delayCategory": "severe",
+          "scheduledDateUtc": "2026-10-17T03:14:00.000Z",
+          "actualDateUtc": "2026-11-09T08:17:18.466Z"
+        }
+      ],
+      "manualExecutions": [
+        {
+          "id": "manual-1794214926286",
+          "type": "manual",
+          "runId": "42590246519",
+          "runNumber": 3,
+          "dispatchTime": "2026-11-09T09:02:02.084Z",
+          "actualTime": "2026-11-09T09:02:06.284Z",
+          "delayMs": 4200,
+          "delaySeconds": 4,
+          "delayFormatted": "+4s",
+          "actor": "baotrivn",
+          "commitSha": "8151b6cc52acb415884be39a965f51d9fd96ac6a",
+          "note": "Manual health check",
+          "status": "success"
+        },
+        {
+          "id": "manual-1794211587536",
+          "type": "manual",
+          "runId": "42583544719",
+          "runNumber": 1,
+          "dispatchTime": "2026-11-09T08:06:23.000Z",
+          "actualTime": "2026-11-09T08:06:27.534Z",
+          "delayMs": 4534,
+          "delaySeconds": 5,
+          "delayFormatted": "+5s",
+          "actor": "baotrivn",
+          "commitSha": "381f67c451e743b2edb4725ef787c9ecb859a647",
+          "note": "Manual health check",
+          "status": "success"
+        },
+        {
+          "id": "manual-1794211269516",
+          "type": "manual",
+          "runId": "local-1794211269512",
+          "runNumber": 12,
+          "dispatchTime": "2026-11-09T08:01:05.000Z",
+          "actualTime": "2026-11-09T08:01:09.512Z",
+          "delayMs": 4512,
+          "delaySeconds": 5,
+          "delayFormatted": "+5s",
+          "actor": "baotrivn",
+          "commitSha": "381f67c",
+          "note": "Release v0.1.0 initial verification",
+          "status": "success"
+        },
+        {
+          "id": "manual-1794210927444",
+          "type": "manual",
+          "runId": "local-1794210927440",
+          "runNumber": 11,
+          "dispatchTime": "2026-11-09T07:55:23.000Z",
+          "actualTime": "2026-11-09T07:55:27.439Z",
+          "delayMs": 4439,
+          "delaySeconds": 4,
+          "delayFormatted": "+4s",
+          "actor": "system",
+          "commitSha": "776c324",
+          "note": "Test setup verification",
+          "status": "success"
+        },
+        {
+          "id": "manual-1762674312000",
+          "type": "manual",
+          "runId": "14000001",
+          "runNumber": 10,
+          "dispatchTime": "2026-11-09T07:45:06.000Z",
+          "actualTime": "2026-11-09T07:45:12.000Z",
+          "delayMs": 6000,
+          "delaySeconds": 6,
+          "delayFormatted": "+6s",
+          "actor": "baotrivn",
+          "commitSha": "776c324",
+          "note": "Initial deployment verification trigger",
+          "status": "success"
+        }
+      ]
+    }
+  ]
+}

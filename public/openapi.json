@@ -1,0 +1,69 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Heartbeat Healthcheck Observatory API",
+    "version": "0.1.0",
+    "description": "Automated healthcheck observatory monitoring monthly 17th cron execution across heartbeat repositories. Automatically runs on the 19th of each month to account for runner delays.",
+    "contact": {
+      "name": "baotrivn",
+      "url": "https://github.com/baotrivn/healthcheck"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://baotrivn.github.io/healthcheck",
+      "description": "Production GitHub Pages"
+    },
+    {
+      "url": "http://localhost:5173",
+      "description": "Local Vite Development Server"
+    }
+  ],
+  "paths": {
+    "/data/healthcheck.json": {
+      "get": {
+        "summary": "Retrieve complete healthcheck observatory snapshot",
+        "description": "Returns the status, OpenAPI compliance, and monthly 17th cron execution analysis for all monitored heartbeat repositories.",
+        "operationId": "getHealthcheckData",
+        "responses": {
+          "200": {
+            "description": "Successful healthcheck response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "version": {
+                      "type": "string",
+                      "example": "0.1.0"
+                    },
+                    "generatedAt": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "checkSchedule": {
+                      "type": "object"
+                    },
+                    "monitoredSchedule": {
+                      "type": "object"
+                    },
+                    "summary": {
+                      "type": "object"
+                    },
+                    "repositories": {
+                      "type": "array"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
