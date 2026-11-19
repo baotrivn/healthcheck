@@ -1,6 +1,6 @@
 {
   "version": "0.1.1",
-  "generatedAt": "2026-11-09T11:42:28.729Z",
+  "generatedAt": "2026-11-19T05:17:49.559Z",
   "checkSchedule": {
     "cron": "0 4 19 * *",
     "description": "Every month on the 19th at 04:00 UTC (48h buffer after the 17th cron)",
@@ -14,7 +14,7 @@
     "totalMonitored": 2,
     "onlineCount": 2,
     "openApiCompliantCount": 2,
-    "averageDelaySecondsAcrossAll": 201067
+    "averageDelaySecondsAcrossAll": 184302
   },
   "repositories": [
     {
@@ -24,7 +24,7 @@
       "repoUrl": "https://github.com/flynn0/heartbeat",
       "description": "Primary GitHub Actions Cron Jitter & Delay Observatory",
       "status": "online",
-      "checkedAt": "2026-11-09T11:42:32.499Z",
+      "checkedAt": "2026-11-19T05:17:49.820Z",
       "openApi": {
         "url": "https://flynn0.github.io/heartbeat/openapi.json",
         "isValid": true,
@@ -121,23 +121,23 @@
         "description": "Every month on the 17th at 03:14:00 UTC"
       },
       "latest17thRun": {
-        "id": "cron-2026-10-17",
+        "id": "cron-2026-11-17",
         "type": "cron",
-        "runId": "local-1794212238466",
-        "runNumber": 1,
-        "scheduledTime": "2026-10-17T03:14:00.000Z",
-        "actualTime": "2026-11-09T08:17:18.466Z",
-        "delayMs": 2005398466,
-        "delaySeconds": 2005398,
-        "delayFormatted": "+557h 3m 18s",
-        "actor": "system",
-        "commitSha": "local-dev",
+        "runId": "44076700512",
+        "runNumber": 5,
+        "scheduledTime": "2026-11-17T03:14:00.000Z",
+        "actualTime": "2026-11-17T11:44:49.152Z",
+        "delayMs": 30649152,
+        "delaySeconds": 30649,
+        "delayFormatted": "+8h 30m 49s",
+        "actor": "flynn0",
+        "commitSha": "afeda9034e6a1135303ba0bb7e844b9e2d7a81c5",
         "status": "success",
         "dayOfMonth": 17,
         "is17th": true,
-        "delayCategory": "severe",
-        "scheduledDateUtc": "2026-10-17T03:14:00.000Z",
-        "actualDateUtc": "2026-11-09T08:17:18.466Z"
+        "delayCategory": "high",
+        "scheduledDateUtc": "2026-11-17T03:14:00.000Z",
+        "actualDateUtc": "2026-11-17T11:44:49.152Z"
       },
       "latestManualTrigger": {
         "id": "manual-1794219021047",
@@ -155,11 +155,11 @@
         "status": "success"
       },
       "statistics": {
-        "totalRuns": 15,
-        "cronRuns": 10,
+        "totalRuns": 16,
+        "cronRuns": 11,
         "manualRuns": 5,
-        "latestCronDelaySeconds": 2005398,
-        "averageCronDelaySeconds": 201067,
+        "latestCronDelaySeconds": 30649,
+        "averageCronDelaySeconds": 185575,
         "minCronDelaySeconds": 214,
         "maxCronDelaySeconds": 2005398
       },
@@ -353,6 +353,25 @@
           "delayCategory": "severe",
           "scheduledDateUtc": "2026-10-17T03:14:00.000Z",
           "actualDateUtc": "2026-11-09T08:17:18.466Z"
+        },
+        {
+          "id": "cron-2026-11-17",
+          "type": "cron",
+          "runId": "44076700512",
+          "runNumber": 5,
+          "scheduledTime": "2026-11-17T03:14:00.000Z",
+          "actualTime": "2026-11-17T11:44:49.152Z",
+          "delayMs": 30649152,
+          "delaySeconds": 30649,
+          "delayFormatted": "+8h 30m 49s",
+          "actor": "flynn0",
+          "commitSha": "afeda9034e6a1135303ba0bb7e844b9e2d7a81c5",
+          "status": "success",
+          "dayOfMonth": 17,
+          "is17th": true,
+          "delayCategory": "high",
+          "scheduledDateUtc": "2026-11-17T03:14:00.000Z",
+          "actualDateUtc": "2026-11-17T11:44:49.152Z"
         }
       ],
       "manualExecutions": [
@@ -440,7 +459,7 @@
       "repoUrl": "https://github.com/baotrivn/heartbeat",
       "description": "Mirror GitHub Actions Cron Jitter & Delay Observatory",
       "status": "online",
-      "checkedAt": "2026-11-09T11:42:32.976Z",
+      "checkedAt": "2026-11-19T05:17:49.956Z",
       "openApi": {
         "url": "https://baotrivn.github.io/heartbeat/openapi.json",
         "isValid": true,
@@ -537,23 +556,23 @@
         "description": "Every month on the 17th at 03:14:00 UTC"
       },
       "latest17thRun": {
-        "id": "cron-2026-10-17",
+        "id": "cron-2026-11-17",
         "type": "cron",
-        "runId": "local-1794212238466",
-        "runNumber": 1,
-        "scheduledTime": "2026-10-17T03:14:00.000Z",
-        "actualTime": "2026-11-09T08:17:18.466Z",
-        "delayMs": 2005398466,
-        "delaySeconds": 2005398,
-        "delayFormatted": "+557h 3m 18s",
-        "actor": "system",
-        "commitSha": "local-dev",
+        "runId": "44013822933",
+        "runNumber": 5,
+        "scheduledTime": "2026-11-17T03:14:00.000Z",
+        "actualTime": "2026-11-17T03:58:01.204Z",
+        "delayMs": 2641204,
+        "delaySeconds": 2641,
+        "delayFormatted": "+44m 1s",
+        "actor": "baotrivn",
+        "commitSha": "aaf5c323694c4783416a52f075b4fee0a9a1eeb3",
         "status": "success",
         "dayOfMonth": 17,
         "is17th": true,
-        "delayCategory": "severe",
-        "scheduledDateUtc": "2026-10-17T03:14:00.000Z",
-        "actualDateUtc": "2026-11-09T08:17:18.466Z"
+        "delayCategory": "moderate",
+        "scheduledDateUtc": "2026-11-17T03:14:00.000Z",
+        "actualDateUtc": "2026-11-17T03:58:01.204Z"
       },
       "latestManualTrigger": {
         "id": "manual-1794214926286",
@@ -571,11 +590,11 @@
         "status": "success"
       },
       "statistics": {
-        "totalRuns": 15,
-        "cronRuns": 10,
+        "totalRuns": 16,
+        "cronRuns": 11,
         "manualRuns": 5,
-        "latestCronDelaySeconds": 2005398,
-        "averageCronDelaySeconds": 201067,
+        "latestCronDelaySeconds": 2641,
+        "averageCronDelaySeconds": 183028,
         "minCronDelaySeconds": 214,
         "maxCronDelaySeconds": 2005398
       },
@@ -769,6 +788,25 @@
           "delayCategory": "severe",
           "scheduledDateUtc": "2026-10-17T03:14:00.000Z",
           "actualDateUtc": "2026-11-09T08:17:18.466Z"
+        },
+        {
+          "id": "cron-2026-11-17",
+          "type": "cron",
+          "runId": "44013822933",
+          "runNumber": 5,
+          "scheduledTime": "2026-11-17T03:14:00.000Z",
+          "actualTime": "2026-11-17T03:58:01.204Z",
+          "delayMs": 2641204,
+          "delaySeconds": 2641,
+          "delayFormatted": "+44m 1s",
+          "actor": "baotrivn",
+          "commitSha": "aaf5c323694c4783416a52f075b4fee0a9a1eeb3",
+          "status": "success",
+          "dayOfMonth": 17,
+          "is17th": true,
+          "delayCategory": "moderate",
+          "scheduledDateUtc": "2026-11-17T03:14:00.000Z",
+          "actualDateUtc": "2026-11-17T03:58:01.204Z"
         }
       ],
       "manualExecutions": [
